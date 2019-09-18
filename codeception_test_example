@@ -1,0 +1,10 @@
+@smoke
+Feature: Check general statistic at dashboard
+  As a admin user
+  I should be able to view general statistic for XXX
+  If I supply valid user credentials
+
+
+  Scenario: login as NNN user
+    Given I logged as NNN in XXX
+    Then I should see Dashboard with <asset>$ diagrams
