@@ -1,0 +1,18 @@
+describe('Check identifier ', function () {
+    it('Should have a HTTP 200 response when modifying settings.', function () {
+        cy.server();
+        cy.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'));
+        cy.visit('?page=level_assets&site_id=1&building=01&level=01');
+        cy.url().should('include', 'page=level_assets&site_id=1&building=01&level=01');
+
+        cy.get('#live_assets > ul.ul-live-assets > li:nth-child(1)').dblclick();
+
+        cy.route('POST', '/inc/ajax/digital_media_manager.php').as('updateDirecetoryManager');
+        cy.get('#directory-manager-514').click();
+        cy.wait('@updateDirecetoryManager');
+
+        cy.get('@updateDirecetoryManager').then((xhr) => {
+            expect(xhr.status).to.eq(200);
+        })
+    });
+});
