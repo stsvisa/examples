@@ -1,0 +1,27 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: 'https://blabla.com'
+            host: 'localhost'
+            browser: chrome
+            window_size: '1920x1080' # disabled in ChromeDriver #window_size: '1024x768'
+            port: 4444
+            capabilities:
+                enableVNC: true
+#        - PhpBrowser:
+#            url: https://blabla.com
+#        - Db:
+#            dsn: "mysql:host=localhost;dbname=testdb"
+        - \Helper\Acceptance:
+        - \Helper\ConfigHelper:
+            KKK_admin_username: 'username@tld.co'
+            KKK_admin_password: '12345!'
+            NNN_admin_username: 'username@tld.co'
+            NNN_admin_password: '12345!'
